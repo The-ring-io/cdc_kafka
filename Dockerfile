@@ -6,6 +6,10 @@ RUN /bin/sh -c apk add
 
 COPY etc/lighttpd/* /etc/lighttpd/
 
+RUN ls -lrt
+
+RUN ls -lrt /etc/lighttpd/ 
+
 COPY start.sh /usr/local/bin/
 
 EXPOSE 80
