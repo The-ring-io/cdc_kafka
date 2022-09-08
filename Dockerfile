@@ -8,7 +8,7 @@ COPY etc/lighttpd/* /etc/lighttpd/
 
 COPY start.sh /usr/local/bin/
 
-EXPOSE map[80/tcp:{}]
+EXPOSE 80
 
 VOLUME [/var/www/localhost/htdocs]
 
