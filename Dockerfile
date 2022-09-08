@@ -1,21 +1,14 @@
 FROM debezium/kafka:1.9
 
-RUN microdnf update -y && microdnf install -y lighthttpd && microdnf clean all
+USER root
 
-RUN /bin/sh -c apk add
+RUN microdnf update -y && microdnf install -y netcat && microdnf clean all
 
-#COPY etc/lighttpd/* /etc/lighttpd/
+EXPOSE 8080
 
-#RUN /bin/sh -c ls -lrt
+COPY start_nc.sh /kafka/
 
-#RUN /bin/sh -c ls -lrt /etc/lighttpd/ 
+RUN chmod +x /kafka/start_nc.sh
 
-#COPY start.sh /usr/local/bin/
-
-#EXPOSE 80
-
-#VOLUME [/var/www/localhost/htdocs]
-
-#VOLUME [/etc/lighttpd]
-
-#CMD ["start.sh"]
+#ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD /kafka/start_nc.sh && /docker-entrypoint.sh start
