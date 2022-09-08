@@ -10,7 +10,7 @@ RUN /bin/sh ls -lrt
 
 RUN /bin/sh ls -lrt /etc/lighttpd/ 
 
-COPY start.sh /usr/local/bin/
+#COPY start.sh /usr/local/bin/
 
 EXPOSE 80
 
