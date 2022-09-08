@@ -1,14 +1,14 @@
 FROM debezium/kafka:1.9
 
-RUN microdnf install lighthttpd
+RUN microdnf install -y lighthttpd && microdnf clean all -y
 
 RUN /bin/sh -c apk add
 
 COPY etc/lighttpd/* /etc/lighttpd/
 
-RUN ls -lrt
+RUN /bin/sh ls -lrt
 
-RUN ls -lrt /etc/lighttpd/ 
+RUN /bin/sh ls -lrt /etc/lighttpd/ 
 
 COPY start.sh /usr/local/bin/
 
